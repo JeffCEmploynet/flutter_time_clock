@@ -43,14 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
   String _dayEnd = '';
 
   String _dayPunches = '';
-  var timeCardJson;
+  String timeCardJson = '';
+  var jsonifyPunchFile = '';
 
   var punchLog = {'punchIn': '', 'lunchOut': '', 'lunchIn': '', 'punchOut': ''};
 
   void _getTime() {
     final String formattedDateTime =
         DateFormat('yyy-MM-dd kk:mm:ss').format(DateTime.now()).toString();
-        
+
     setState(() {
       _punchTime = formattedDateTime;
       if (punchCount < 4) {
@@ -87,6 +88,26 @@ class _MyHomePageState extends State<MyHomePage> {
     print(timeCardJson);
   }
 
+  // Future<String> loadPunches(dayPunch) async {
+  //   dayPunch = timeCardJson;
+  //   String fileToLoad = await filestore.writeFile(dayPunch);
+
+  Future<String> pullPunches() async {
+    String myPunchFile = await filestore.readFile();
+    jsonifyPunchFile = jsonEncode(myPunchFile);
+    print(jsonifyPunchFile);
+    return jsonifyPunchFile;
+  }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   pullPunches();
+  //   setState(() {
+  //     punchLog = jsonifyPunchFile;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,6 +126,10 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             Text(_dayPunches),
+            IconButton(
+              icon: Icon(Icons.access_time),
+              onPressed: processPunches(),
+            )
           ],
         ),
       ),
