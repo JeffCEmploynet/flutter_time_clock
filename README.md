@@ -1,16 +1,3 @@
-# flutter_time_clock
+An incomplete cross-platform mobile timeclock application that can be used on iPads and Android tablets, written in Flutter (Dart).
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This program can track punches, allow managers to customize punch types available, capture identifiers compatible with a database, allow registration through a QR code, and was prepped to work with a companion web app for managers. However, this project eventually got scraped as priorities shifted for the company sponsoring the project.
